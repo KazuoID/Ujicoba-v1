@@ -30,9 +30,12 @@ const musicIcon = document.getElementById("musicIcon");
 
 // 1. Masukkan link lagu-lagumu di dalam tanda kutip di bawah ini
 const tracklist = [
-    "./Alan Menken - Kingdom Dance (From Tangled Score).mp3",
-    "https://contoh-link.com/lagu-lofi-2.mp3",
-    "https://contoh-link.com/lagu-santai-3.mp3"
+    "../music/Alan Menken - Kingdom Dance (From Tangled Score).mp3",
+    "../music/Jarak - BeaconCream.mp3",
+    "../music/Graze the Roof - Laura Shigihara.mp3",
+    "../music/Menggapai Mentari - Aretha Kirana.mp3",
+    "../music/Pirate Seas _From Plants vs. Zombies 2_ _Secret Track_ - Laura Shigihara.mp3",
+    "../music/Skyfall - Adele.mp3"
 ];
 
 let currentTrackIndex = 0; // Mulai dari lagu pertama (urutan ke-0)
