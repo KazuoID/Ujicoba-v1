@@ -3,18 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const reveals = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right");
 
     const revealOptions = {
-        threshold: 0.3, // Animasi mulai saat 30% elemen terlihat di layar
+        threshold: 0.2, // Mulai animasi saat 20% elemen masuk layar
         rootMargin: "0px 0px -50px 0px"
     };
 
     const revealOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
+            // Jika elemen masuk layar, tambah class "active"
+            if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                // Hapus observer kalau sudah muncul agar tidak berulang (opsional)
-                // observer.unobserve(entry.target); 
+            } else {
+                // Jika elemen keluar layar, hapus class "active" 
+                // Ini yang bikin animasinya bisa main lagi saat discroll naik/turun!
+                entry.target.classList.remove("active");
             }
         });
     }, revealOptions);
