@@ -30,7 +30,7 @@ const musicIcon = document.getElementById("musicIcon");
 
 // 1. Masukkan link lagu-lagumu di dalam tanda kutip di bawah ini
 const tracklist = [
-    "https://contoh-link.com/lagu-alam-1.mp3",
+    "./Alan Menken - Kingdom Dance (From Tangled Score).mp3",
     "https://contoh-link.com/lagu-lofi-2.mp3",
     "https://contoh-link.com/lagu-santai-3.mp3"
 ];
