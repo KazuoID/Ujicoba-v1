@@ -23,4 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
     reveals.forEach(reveal => {
         revealOnScroll.observe(reveal);
     });
+    // --- Fitur Background Music ---
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+
+let isPlaying = false;
+
+    musicToggle.addEventListener("click", function() {
+        if (isPlaying) {
+            bgMusic.pause();
+            // Ganti ikon ke mute
+            musicIcon.classList.remove("fa-music");
+            musicIcon.classList.add("fa-volume-xmark");
+        } else {
+            bgMusic.play();
+            // Ganti ikon ke nada musik
+            musicIcon.classList.remove("fa-volume-xmark");
+            musicIcon.classList.add("fa-music");
+        }
+        isPlaying = !isPlaying;
+    });
 });
