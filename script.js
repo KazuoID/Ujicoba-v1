@@ -23,25 +23,49 @@ document.addEventListener("DOMContentLoaded", function () {
     reveals.forEach(reveal => {
         revealOnScroll.observe(reveal);
     });
-    // --- Fitur Background Music ---
+// --- Fitur Background Music (Tracklist / Playlist) ---
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 const musicIcon = document.getElementById("musicIcon");
 
+// 1. Masukkan link lagu-lagumu di dalam tanda kutip di bawah ini
+const tracklist = [
+    "https://contoh-link.com/lagu-alam-1.mp3",
+    "https://contoh-link.com/lagu-lofi-2.mp3",
+    "https://contoh-link.com/lagu-santai-3.mp3"
+];
+
+let currentTrackIndex = 0; // Mulai dari lagu pertama (urutan ke-0)
 let isPlaying = false;
 
-    musicToggle.addEventListener("click", function() {
-        if (isPlaying) {
-            bgMusic.pause();
-            // Ganti ikon ke mute
-            musicIcon.classList.remove("fa-music");
-            musicIcon.classList.add("fa-volume-xmark");
-        } else {
-            bgMusic.play();
-            // Ganti ikon ke nada musik
-            musicIcon.classList.remove("fa-volume-xmark");
-            musicIcon.classList.add("fa-music");
-        }
-        isPlaying = !isPlaying;
-    });
+// 2. Set lagu pertama ke elemen audio saat web dimuat
+bgMusic.src = tracklist[currentTrackIndex];
+
+// 3. Fungsi untuk Play dan Pause
+musicToggle.addEventListener("click", function() {
+    if (isPlaying) {
+        bgMusic.pause();
+        musicIcon.classList.remove("fa-music");
+        musicIcon.classList.add("fa-volume-xmark");
+    } else {
+        bgMusic.play();
+        musicIcon.classList.remove("fa-volume-xmark");
+        musicIcon.classList.add("fa-music");
+    }
+    isPlaying = !isPlaying;
+});
+
+// 4. Deteksi kalau lagu sudah habis, langsung ganti lagu berikutnya
+bgMusic.addEventListener("ended", function() {
+    currentTrackIndex++; // Pindah ke lagu selanjutnya
+    
+    // Kalau urutan lagu sudah melebihi jumlah lagu di playlist, balik ke lagu pertama
+    if (currentTrackIndex >= tracklist.length) {
+        currentTrackIndex = 0;
+    }
+    
+    // Masukkan lagu baru dan langsung mainkan
+    bgMusic.src = tracklist[currentTrackIndex];
+    bgMusic.play();
+});
 });
